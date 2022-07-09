@@ -1,4 +1,4 @@
-package stroid
+package stroids
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-type Str struct {
+type UnicodeStr struct {
 	value string
 }
 
@@ -35,27 +35,27 @@ func Init() {
 	fmt.Println(language.Afrikaans)
 }
 
-func (s *Str) String() string {
+func (s *UnicodeStr) String() string {
 	return s.value
 }
 
-func (s *Str) StartsWith(str string) bool {
+func (s *UnicodeStr) StartsWith(str string) bool {
 	return strings.HasPrefix(s.value, str)
 }
 
-func (s *Str) EndsWith(str string) bool {
+func (s *UnicodeStr) EndsWith(str string) bool {
 	return strings.HasSuffix(s.value, str)
 }
 
-func (s *Str) EqualsTo(str string) bool {
+func (s *UnicodeStr) EqualsTo(str string) bool {
 	return strings.Compare(s.value, str) == 0
 }
 
-func (s *Str) Match(pattern string) (bool, error) {
+func (s *UnicodeStr) Match(pattern string) (bool, error) {
 	return regexp.MatchString(pattern, s.value)
 }
 
-func (s *Str) ContainsAny(strs []string) bool {
+func (s *UnicodeStr) ContainsAny(strs []string) bool {
 	for _, str := range strs {
 		if strings.Contains(s.value, str) {
 			return true
@@ -65,7 +65,7 @@ func (s *Str) ContainsAny(strs []string) bool {
 	return false
 }
 
-func (s Str) IndexOf(indexValue IndexValue) int {
+func (s UnicodeStr) IndexOf(indexValue IndexValue) int {
 	absOffset := int(math.Abs(float64(indexValue.Offset)))
 	if absOffset >= s.Length() || absOffset == 0 {
 		return strings.Index(s.value, indexValue.Str)
@@ -79,11 +79,11 @@ func (s Str) IndexOf(indexValue IndexValue) int {
 	return 1
 }
 
-func (s *Str) Length() int {
+func (s *UnicodeStr) Length() int {
 	return len(s.value)
 }
 
-func (s Str) ToRunes() []rune {
+func (s UnicodeStr) ToRunes() []rune {
 	return []rune(s.value)
 }
 

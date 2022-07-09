@@ -1,4 +1,4 @@
-package stroid
+package stroids
 
 import (
 	"math/rand"
@@ -8,13 +8,13 @@ import (
 const charset = "abcdefghijklmnopqrstuvwxyz" +
 	"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
-func FromString(str string) Str {
-	return Str{
+func Unicode(str string) UnicodeStr {
+	return UnicodeStr{
 		value: str,
 	}
 }
 
-func FromRand(length int, characters ...string) Str {
+func FromRand(length int, characters ...string) UnicodeStr {
 	var chars string
 	if len(characters) > 0 {
 		chars = characters[0]
@@ -32,7 +32,7 @@ func FromRand(length int, characters ...string) Str {
 		randRunes[i] = charactersRunes[seedRand.Intn(charactersRunesLen)]
 	}
 
-	return Str{
+	return UnicodeStr{
 		value: string(randRunes),
 	}
 }

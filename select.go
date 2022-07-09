@@ -1,8 +1,8 @@
-package stroid
+package stroids
 
 import "strings"
 
-func (s *Str) Before(needle Needle) *Str {
+func (s *UnicodeStr) Before(needle Needle) *UnicodeStr {
 	firstIndex := strings.Index(s.value, needle.Str)
 	if needle.IncludeNeedle {
 		firstIndex += len(needle.Str)
@@ -17,7 +17,7 @@ func (s *Str) Before(needle Needle) *Str {
 	return s
 }
 
-func (s *Str) BeforeLast(needle Needle) *Str {
+func (s *UnicodeStr) BeforeLast(needle Needle) *UnicodeStr {
 	lastIndex := strings.LastIndex(s.value, needle.Str)
 	if needle.IncludeNeedle {
 		lastIndex += len(needle.Str)
@@ -32,7 +32,7 @@ func (s *Str) BeforeLast(needle Needle) *Str {
 	return s
 }
 
-func (s *Str) After(needle Needle) *Str {
+func (s *UnicodeStr) After(needle Needle) *UnicodeStr {
 	firstIndex := strings.Index(s.value, needle.Str)
 	if needle.IncludeNeedle {
 		firstIndex -= len(needle.Str)
@@ -47,7 +47,7 @@ func (s *Str) After(needle Needle) *Str {
 	return s
 }
 
-func (s *Str) AfterLast(needle Needle) *Str {
+func (s *UnicodeStr) AfterLast(needle Needle) *UnicodeStr {
 	lastIndex := strings.LastIndex(s.value, needle.Str)
 	if needle.IncludeNeedle {
 		lastIndex -= len(needle.Str)
@@ -62,7 +62,7 @@ func (s *Str) AfterLast(needle Needle) *Str {
 	return s
 }
 
-func (s *Str) Slice(size Width) *Str {
+func (s *UnicodeStr) Slice(size Width) *UnicodeStr {
 	from := size.From.handy(s.value)
 	to := size.To.handy(s.value)
 
