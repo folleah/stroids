@@ -10,7 +10,7 @@ type Wrap struct {
 	WrapLetter bool
 }
 
-func (s *StrUnicode) Trim(cutset ...string) *StrUnicode {
+func (s StrUnicode) Trim(cutset ...string) StrUnicode {
 	if len(cutset) == 0 {
 		s.value = strings.TrimSpace(s.value)
 	} else {
@@ -20,7 +20,7 @@ func (s *StrUnicode) Trim(cutset ...string) *StrUnicode {
 	return s
 }
 
-func (s *StrUnicode) TrimStart(cutset ...string) *StrUnicode {
+func (s StrUnicode) TrimStart(cutset ...string) StrUnicode {
 	if len(cutset) == 0 {
 		s.value = strings.TrimLeft(s.value, " ")
 	} else {
@@ -30,7 +30,7 @@ func (s *StrUnicode) TrimStart(cutset ...string) *StrUnicode {
 	return s
 }
 
-func (s *StrUnicode) TrimEnd(cutset ...string) *StrUnicode {
+func (s StrUnicode) TrimEnd(cutset ...string) StrUnicode {
 	if len(cutset) == 0 {
 		s.value = strings.TrimRight(s.value, " ")
 	} else {
@@ -40,7 +40,7 @@ func (s *StrUnicode) TrimEnd(cutset ...string) *StrUnicode {
 	return s
 }
 
-func (s *StrUnicode) PadBoth(width int, char rune) *StrUnicode {
+func (s StrUnicode) PadBoth(width int, char rune) StrUnicode {
 	if s.Length() >= width {
 		return s
 	}
@@ -60,7 +60,7 @@ func (s *StrUnicode) PadBoth(width int, char rune) *StrUnicode {
 	return s
 }
 
-func (s *StrUnicode) PadStart(width int, char rune) *StrUnicode {
+func (s StrUnicode) PadStart(width int, char rune) StrUnicode {
 	if s.Length() >= width {
 		return s
 	}
@@ -76,7 +76,7 @@ func (s *StrUnicode) PadStart(width int, char rune) *StrUnicode {
 	return s
 }
 
-func (s *StrUnicode) PadEnd(width int, char rune) *StrUnicode {
+func (s StrUnicode) PadEnd(width int, char rune) StrUnicode {
 	if s.Length() >= width {
 		return s
 	}
@@ -92,7 +92,7 @@ func (s *StrUnicode) PadEnd(width int, char rune) *StrUnicode {
 	return s
 }
 
-func (s *StrUnicode) WordWrap(wrap Wrap) *StrUnicode {
+func (s StrUnicode) WordWrap(wrap Wrap) StrUnicode {
 	var formatted []rune
 
 	for i, char := range s.ToRunes() {
@@ -109,7 +109,7 @@ func (s *StrUnicode) WordWrap(wrap Wrap) *StrUnicode {
 	return s
 }
 
-func (s *StrUnicode) Mask(symbol rune, offset Offset) *StrUnicode {
+func (s StrUnicode) Mask(symbol rune, offset Offset) StrUnicode {
 	offset = offset.handy(s.value)
 
 	chars := s.ToRunes()
@@ -128,7 +128,7 @@ func (s *StrUnicode) Mask(symbol rune, offset Offset) *StrUnicode {
 	return s
 }
 
-func (s *StrUnicode) Reverse() *StrUnicode {
+func (s StrUnicode) Reverse() StrUnicode {
 	runes := s.ToRunes()
 	if len(runes) == 0 {
 		return s
