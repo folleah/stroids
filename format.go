@@ -15,7 +15,7 @@ var (
 	CamelCaseLower = Case(11)
 )
 
-func (s *UnicodeStr) Title(allWords bool) *UnicodeStr {
+func (s *StrUnicode) Title(allWords bool) *StrUnicode {
 	var prevCharacter rune
 
 	if s.Length() == 0 {
@@ -50,19 +50,19 @@ func (s *UnicodeStr) Title(allWords bool) *UnicodeStr {
 	return s
 }
 
-func (s *UnicodeStr) Lower() *UnicodeStr {
+func (s *StrUnicode) Lower() *StrUnicode {
 	s.value = strings.ToLower(s.value)
 
 	return s
 }
 
-func (s *UnicodeStr) Upper() *UnicodeStr {
+func (s *StrUnicode) Upper() *StrUnicode {
 	s.value = strings.ToUpper(s.value)
 
 	return s
 }
 
-func (s *UnicodeStr) ToCase(c Case) *UnicodeStr {
+func (s *StrUnicode) ToCase(c Case) *StrUnicode {
 	switch c {
 	case SnakeCaseLower:
 		s.value = likeSnakeCase(s.value, '_', false, false)

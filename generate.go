@@ -8,13 +8,13 @@ import (
 const charset = "abcdefghijklmnopqrstuvwxyz" +
 	"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
-func Unicode(str string) UnicodeStr {
-	return UnicodeStr{
+func Unicode(str string) StrUnicode {
+	return StrUnicode{
 		value: str,
 	}
 }
 
-func FromRand(length int, characters ...string) UnicodeStr {
+func UnicodeRand(length int, characters ...string) StrUnicode {
 	var chars string
 	if len(characters) > 0 {
 		chars = characters[0]
@@ -32,7 +32,7 @@ func FromRand(length int, characters ...string) UnicodeStr {
 		randRunes[i] = charactersRunes[seedRand.Intn(charactersRunesLen)]
 	}
 
-	return UnicodeStr{
+	return StrUnicode{
 		value: string(randRunes),
 	}
 }
